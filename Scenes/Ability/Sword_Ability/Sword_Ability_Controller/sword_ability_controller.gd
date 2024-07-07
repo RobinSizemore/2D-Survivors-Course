@@ -1,5 +1,6 @@
 extends Node
 
+const SWORD_SPAWN_RANGE = 4
 @export var max_range: float = 100
 @export var sword_ability: PackedScene
 
@@ -24,3 +25,7 @@ func on_timer_timeout():
     var sword_instance = sword_ability.instantiate() as Node2D
     player.get_parent().add_child(sword_instance)
     sword_instance.global_position = enemies[0].global_position
+    sword_instance.global_position += Vector2.RIGHT.rotated(randf_range(0, TAU)) * SWORD_SPAWN_RANGE
+
+    var enemy_direction = (enemies[0].global_position - sword_instance.global_position).normalized()
+    sword_instance.rotation = enemy_direction.angle()
