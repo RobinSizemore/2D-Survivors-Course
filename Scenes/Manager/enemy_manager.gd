@@ -1,6 +1,6 @@
 extends Node
 
-const SPAWN_RADIUS = 325
+const SPAWN_RADIUS = 350
 @export var basic_enemy_scene: PackedScene
 
 func _ready():
@@ -13,5 +13,6 @@ func on_timer_timeout():
         return
     var random_direction = Vector2.RIGHT.rotated(randf_range(0, TAU))
     var spawn_position = player.global_position + (random_direction * SPAWN_RADIUS)
+    
     get_parent().add_child(basic_enemy_instance)
     basic_enemy_instance.global_position = spawn_position

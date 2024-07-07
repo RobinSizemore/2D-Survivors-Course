@@ -1,7 +1,7 @@
 extends Camera2D
 
 var target_position = Vector2.ZERO
-const SMOOTH = 10
+const SMOOTH = 20
 
 func _ready():
     make_current()
