@@ -17,13 +17,11 @@ func _process(delta: float):
         var t = min(elapsed_time / move_duration, 1.0)
         global_position = global_position.lerp(player_node.global_position, t)
         if global_position.distance_to(end_position) < 1.0 or elapsed_time > move_duration:
-            print("Picked up.")
             GameEvents.exp_vial_collected.emit(1)
             queue_free()
 
 func on_area_entered(_other_area: Area2D):
     if player_node == null:
-        print("player null")
         return
     $AnimationPlayer.play("picked_up")
     start_position = position
