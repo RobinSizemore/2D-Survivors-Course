@@ -15,6 +15,10 @@ run/main_scene="res://Scenes/Main/main.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameEvents="*res://Scenes/AutoLoad/game_events.tscn"
+
 [display]
 
 window/size/viewport_width=640

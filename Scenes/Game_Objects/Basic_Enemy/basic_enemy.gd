@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 const MAX_SPEED = 75
 
+@onready var health_component: HealthComponent = $HealthComponent
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Area2D.area_entered.connect(on_area_entered)
@@ -20,4 +22,4 @@ func get_direction_to_player():
 func on_area_entered(other_area):
 	var ability_layer = 4 # The sword ability is on layer 3, which is 1**2, so 4.
 	if other_area.collision_layer == ability_layer:
-		queue_free() # Destroy the enemy when the sword ability hits it.
+		health_component.take_damage(100)
