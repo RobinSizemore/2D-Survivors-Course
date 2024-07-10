@@ -26,7 +26,8 @@ end_screen_scene = ExtResource("7_b4oo2")
 experience_manager = NodePath("../ExperienceManager")
 upgrade_screen_scene = ExtResource("4_3llii")
 
-[node name="EnemyManager" parent="." instance=ExtResource("4_6i4ud")]
+[node name="EnemyManager" parent="." node_paths=PackedStringArray("arena_time_manager") instance=ExtResource("4_6i4ud")]
+arena_time_manager = NodePath("../ArenaTimeManager")
 
 [node name="ArenaTimeManager" parent="." instance=ExtResource("3_wm8bl")]
 
