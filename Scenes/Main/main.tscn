@@ -1,5 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://bxeqr4fv0dk5c"]
+[gd_scene load_steps=14 format=3 uid="uid://bxeqr4fv0dk5c"]
 
+[ext_resource type="Script" path="res://Scenes/Main/main.gd" id="1_04n2b"]
 [ext_resource type="PackedScene" uid="uid://3xdh642xk56j" path="res://Scenes/Game_Objects/Player/player.tscn" id="1_6a5uu"]
 [ext_resource type="PackedScene" uid="uid://bnvmgu40wuvd" path="res://Scenes/AutoLoad/game_events.tscn" id="1_8f0t4"]
 [ext_resource type="PackedScene" uid="uid://d3ahxlt8vjklc" path="res://Scenes/Manager/experience_manager.tscn" id="1_n0b8n"]
@@ -10,10 +11,12 @@
 [ext_resource type="PackedScene" uid="uid://bun22p61l3hvm" path="res://Scenes/Manager/upgrade_manager.tscn" id="3_wpnyx"]
 [ext_resource type="PackedScene" uid="uid://nk44topdngx4" path="res://Scenes/UI/upgrade_screen.tscn" id="4_3llii"]
 [ext_resource type="PackedScene" uid="uid://cffhqn7tk7wv4" path="res://Scenes/Manager/enemy_manager.tscn" id="4_6i4ud"]
-[ext_resource type="PackedScene" uid="uid://dp88kcueunsxb" path="res://Scenes/UI/victory_screen.tscn" id="7_b4oo2"]
+[ext_resource type="PackedScene" uid="uid://dp88kcueunsxb" path="res://Scenes/UI/end_screen.tscn" id="7_b4oo2"]
 [ext_resource type="PackedScene" uid="uid://bcox38odxtx7t" path="res://Scenes/UI/experience_bar.tscn" id="9_iqj3y"]
 
 [node name="Main" type="Node"]
+script = ExtResource("1_04n2b")
+end_screen_scene = ExtResource("7_b4oo2")
 
 [node name="GameEvents" parent="." instance=ExtResource("1_8f0t4")]
 
@@ -26,7 +29,6 @@ upgrade_screen_scene = ExtResource("4_3llii")
 [node name="EnemyManager" parent="." instance=ExtResource("4_6i4ud")]
 
 [node name="ArenaTimeManager" parent="." instance=ExtResource("3_wm8bl")]
-victory_screen_scene = ExtResource("7_b4oo2")
 
 [node name="ArenaTimeUI" parent="." node_paths=PackedStringArray("arena_time_manager") instance=ExtResource("2_13vkr")]
 arena_time_manager = NodePath("../ArenaTimeManager")
@@ -47,6 +49,7 @@ y_sort_enabled = true
 scale = Vector2(1.00174, 1)
 
 [node name="Player" parent="Entities" instance=ExtResource("1_6a5uu")]
+unique_name_in_owner = true
 position = Vector2(1, 1)
 
 [node name="Foreground" type="Node2D" parent="." groups=["foreground_layer"]]

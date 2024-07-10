@@ -18,6 +18,5 @@ func on_timer_timeout():
     if entities_layer == null:
         print("No entities layer found!")
         return
-
-    entities_layer.add_child(basic_enemy_instance)
     basic_enemy_instance.global_position = spawn_position
+    entities_layer.add_child(basic_enemy_instance)
