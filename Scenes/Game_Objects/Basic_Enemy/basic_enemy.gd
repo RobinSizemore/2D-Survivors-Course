@@ -6,6 +6,8 @@ const MAX_SPEED = 75
 
 func _process(_delta):
 	var movement_vector = get_direction_to_player()
+	if movement_vector == null:
+		return
 	velocity = movement_vector * MAX_SPEED
 	move_and_slide()
 
