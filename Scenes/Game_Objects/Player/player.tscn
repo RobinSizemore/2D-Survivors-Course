@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://3xdh642xk56j"]
+[gd_scene load_steps=10 format=3 uid="uid://3xdh642xk56j"]
 
 [ext_resource type="Script" path="res://Scenes/Game_Objects/Player/player.gd" id="1_gs2pb"]
 [ext_resource type="Texture2D" uid="uid://dna7a0g6enrax" path="res://Scenes/Game_Objects/Player/player.png" id="1_m3npb"]
@@ -12,6 +12,17 @@ radius = 7.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d6cpg"]
 radius = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nb44v"]
+bg_color = Color(0.247059, 0.14902, 0.192157, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4xkdb"]
+bg_color = Color(0, 0.6, 0.858824, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.247059, 0.14902, 0.192157, 1)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 scale = Vector2(1.00431, 1)
@@ -54,3 +65,16 @@ offset = Vector2(0, -8)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_d6cpg")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(20, 2)
+offset_left = -9.95708
+offset_top = -20.0
+offset_right = 10.0429
+offset_bottom = -16.0
+pivot_offset = Vector2(10, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_nb44v")
+theme_override_styles/fill = SubResource("StyleBoxFlat_4xkdb")
+max_value = 1.0
+value = 0.5
+show_percentage = false
