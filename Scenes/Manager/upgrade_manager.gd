@@ -29,6 +29,7 @@ func apply_upgrade(chosen_upgrade: AbilityUpgrade):
 	else:
 		current_upgrades[chosen_upgrade.id].quantity += 1
 		print("Level up! Chose upgrade: ", chosen_upgrade.name, " (", current_upgrades[chosen_upgrade.id].quantity, ")")
+	GameEvents.emit_ability_upgrades_added(chosen_upgrade, current_upgrades)
 
 func on_upgrade_selected(upgrade: AbilityUpgrade):
 	apply_upgrade(upgrade)

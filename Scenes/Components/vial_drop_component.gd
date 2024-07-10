@@ -16,4 +16,8 @@ func on_died():
     if randf() > drop_percent:
         var vial = vial_scene.instantiate() as Node2D
         vial.global_position = (owner as Node2D).global_position
-        owner.get_parent().add_child(vial)
+        var entities_layer = get_tree().get_first_node_in_group("entities_layer")
+        if entities_layer == null:
+            print("No entities layer found!")
+            return
+        entities_layer.add_child(vial)
