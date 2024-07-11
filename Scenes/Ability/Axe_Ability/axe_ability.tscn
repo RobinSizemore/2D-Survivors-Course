@@ -1,0 +1,68 @@
+[gd_scene load_steps=8 format=3 uid="uid://bxl3vstqis4nj"]
+
+[ext_resource type="Script" path="res://Scenes/Ability/Axe_Ability/axe_ability.gd" id="1_msuke"]
+[ext_resource type="Texture2D" uid="uid://cpspak3fxfsyd" path="res://Scenes/Ability/Axe_Ability/axe.png" id="2_jb0r0"]
+[ext_resource type="Script" path="res://Scenes/Components/hitbox_component.gd" id="3_hodyh"]
+
+[sub_resource type="Animation" id="Animation_1yrxn"]
+resource_name = "default"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.5708, 4.71239]
+}
+
+[sub_resource type="Animation" id="Animation_xmpk4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.5708]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kjocs"]
+_data = {
+"RESET": SubResource("Animation_xmpk4"),
+"default": SubResource("Animation_1yrxn")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5crp5"]
+size = Vector2(9, 14)
+
+[node name="AxeAbility" type="Node2D"]
+script = ExtResource("1_msuke")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kjocs")
+}
+autoplay = "default"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -1.5708
+texture = ExtResource("2_jb0r0")
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("3_hodyh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(-2.5, 0)
+shape = SubResource("RectangleShape2D_5crp5")
