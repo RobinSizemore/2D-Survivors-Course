@@ -7,6 +7,7 @@ const DAMAGE_RATE = 1 # Seconds per damage 'tick'
 @onready var damage_interval_timer = $DamageIntervalTimer
 @onready var health_component = $HealthComponent
 @onready var health_bar = $HealthBar
+@onready var abilities = $Abilities
 
 var number_colliding_bodies = 0
 
@@ -15,6 +16,7 @@ func _ready():
 	$CollisionArea2D.body_exited.connect(on_body_exited)
 	health_component.health_changed.connect(on_health_changed)
 	damage_interval_timer.timeout.connect(on_damage_interval_timer_timeout)
+	GameEvents.ability_upgrades_added.connect(on_ability_upgrades_added)
 	on_health_changed()
 
 func _process(delta):
@@ -50,3 +52,9 @@ func on_damage_interval_timer_timeout():
 
 func on_health_changed():
 	update_health()
+
+func on_ability_upgrades_added(upgrade: AbilityUpgrade, _upgrades: Dictionary):
+	# This is an upgrade to an existing ability. Let abilities handle it.
+	if not upgrade is Ability:
+		return
+	abilities.add_child(upgrade.ability_controller_scene.instantiate())
