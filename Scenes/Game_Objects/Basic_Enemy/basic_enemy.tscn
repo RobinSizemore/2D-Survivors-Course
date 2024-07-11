@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ct27jh73xpibc"]
+[gd_scene load_steps=12 format=3 uid="uid://ct27jh73xpibc"]
 
 [ext_resource type="Texture2D" uid="uid://g16bojmu2i0" path="res://Scenes/Game_Objects/Basic_Enemy/basic_enemy.png" id="1_4os78"]
 [ext_resource type="Script" path="res://Scenes/Game_Objects/Basic_Enemy/basic_enemy.gd" id="1_wrkwh"]
@@ -6,6 +6,67 @@
 [ext_resource type="PackedScene" uid="uid://dam14jxlqjvya" path="res://Scenes/Components/vial_drop_component.tscn" id="2_kauji"]
 [ext_resource type="PackedScene" uid="uid://dq24xeiofdni7" path="res://Scenes/Game_Objects/ExperienceVial/ExperienceVial.tscn" id="3_e4bao"]
 [ext_resource type="PackedScene" uid="uid://dle5n101ichgx" path="res://Scenes/Components/hurtbox_component.tscn" id="5_8xiqn"]
+
+[sub_resource type="Animation" id="Animation_4qw8y"]
+resource_name = "walk"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.88, 1), Vector2(1.12, 1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:skew")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.7, 1),
+"transitions": PackedFloat32Array(1, 0.757858, 1.31951, 1.8025),
+"update": 0,
+"values": [-0.0872665, 0.0, -0.0174533, 0.0872665]
+}
+
+[sub_resource type="Animation" id="Animation_n8kkj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:skew")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_in3tt"]
+_data = {
+"RESET": SubResource("Animation_n8kkj"),
+"walk": SubResource("Animation_4qw8y")
+}
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wbdfc"]
 
@@ -17,6 +78,14 @@ collision_layer = 8
 collision_mask = 9
 motion_mode = 1
 script = ExtResource("1_wrkwh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_in3tt")
+}
+autoplay = "walk"
+speed_scale = 2.0
 
 [node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component_node") instance=ExtResource("2_kauji")]
 vial_scene = ExtResource("3_e4bao")
