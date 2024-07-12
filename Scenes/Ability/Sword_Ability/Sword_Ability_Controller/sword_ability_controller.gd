@@ -17,11 +17,17 @@ func on_timer_timeout():
 	if player == null:
 		return
 	var enemies = get_tree().get_nodes_in_group("enemies")
+	print(enemies)
+	if enemies.size() < 1: # No enemies in range,
+		print("No enemies found.")
+		return
+	
 	enemies = enemies.filter(func(enemy: Node2D):
 		# Checking squared distance is mathematically faster than just distance (for some reason)
 		return enemy.global_position.distance_squared_to(player.global_position) < pow(max_range, 2)
 	)
 	if enemies.size() < 1: # No enemies in range,
+		print("No enemies in range.")
 		return
 	enemies.sort_custom(func(a: Node2D, b: Node2D):
 		return a.global_position.distance_squared_to(player.global_position) < b.global_position.distance_squared_to(player.global_position)

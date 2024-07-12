@@ -2,7 +2,7 @@ extends Node
 
 const TERRAIN_PHYSICS_LAYER = 1
 const SPAWN_RADIUS = 350
-@export var basic_enemy_scene: PackedScene
+@export var enemies: Array[PackedScene] = []
 @export var arena_time_manager: Node
 
 @onready var enemy_timer = $Timer
@@ -34,7 +34,10 @@ func get_spawn_position():
     return spawn_position
 
 func on_timer_timeout():
-    var basic_enemy_instance = basic_enemy_scene.instantiate() as Node2D
+    if enemies.size() == 0:
+        return
+    var enemy_scene = enemies[randi() % enemies.size()]
+    var enemy_instance = enemy_scene.instantiate() as Node2D
     var player = get_tree().get_first_node_in_group("player") as Node2D
     if player == null:
         return
@@ -42,8 +45,8 @@ func on_timer_timeout():
     if entities_layer == null:
         print("No entities layer found!")
         return
-    basic_enemy_instance.global_position = get_spawn_position()
-    entities_layer.add_child(basic_enemy_instance)
+    enemy_instance.global_position = get_spawn_position()
+    entities_layer.add_child(enemy_instance)
     enemy_timer.start()
 
 func on_arena_difficulty_increased(difficulty: int):

@@ -34,8 +34,6 @@ func _process(delta):
 	var move_sign = sign(movement_vector.x)
 	if move_sign != 0:
 		visuals.scale = Vector2(move_sign, 1)
-	else:
-		visuals.scale = Vector2.ONE
 
 func get_movement_vector():
 	var x_movement = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")

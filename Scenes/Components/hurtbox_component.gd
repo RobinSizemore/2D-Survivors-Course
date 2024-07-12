@@ -4,13 +4,13 @@ class_name HurtboxComponent
 @export var health_component: Node
 
 func _ready():
-    area_entered.connect(on_area_entered)
+	area_entered.connect(on_area_entered)
 
 func on_area_entered(other_area):
-    if not other_area is HitboxComponent:
-        return
-    if other_area == null:
-        return
+	if not other_area is HitboxComponent:
+		return
+	if other_area == null:
+		return
 
-    var hitbox_component = other_area as HitboxComponent
-    health_component.take_damage(hitbox_component.damage)
+	var hitbox_component = other_area as HitboxComponent
+	health_component.take_damage(hitbox_component.damage)
