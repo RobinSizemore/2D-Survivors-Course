@@ -31,6 +31,10 @@ window/stretch/mode="viewport"
 
 project/assembly_name="2D-Survivors-Course"
 
+[gui]
+
+theme/custom="res://Resources/Theme/theme.tres"
+
 [input]
 
 move_left={
