@@ -6,7 +6,8 @@
 
 [node name="EnemyManager" type="Node"]
 script = ExtResource("1_uf31r")
-enemies = Array[PackedScene]([ExtResource("2_r6m1l"), ExtResource("3_4go7b")])
+basic_enemy = ExtResource("2_r6m1l")
+wizard_enemy = ExtResource("3_4go7b")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

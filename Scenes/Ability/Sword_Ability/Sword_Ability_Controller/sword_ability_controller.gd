@@ -17,7 +17,6 @@ func on_timer_timeout():
 	if player == null:
 		return
 	var enemies = get_tree().get_nodes_in_group("enemies")
-	print(enemies)
 	if enemies.size() < 1: # No enemies in range,
 		print("No enemies found.")
 		return
