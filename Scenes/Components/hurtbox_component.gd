@@ -19,4 +19,7 @@ func on_area_entered(other_area):
 	var float_text = floating_text_scene.instantiate() as Node2D
 	get_tree().get_first_node_in_group("foreground_layer").add_child(float_text)
 	float_text.global_position = global_position + (Vector2.UP * 8)
-	float_text.start(str(hitbox_component.damage))
+	var format_string = "%0.1f"
+	if hitbox_component.damage == int(hitbox_component.damage):
+		format_string = "%d"
+	float_text.start(str(format_string % hitbox_component.damage))

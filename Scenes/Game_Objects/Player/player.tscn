@@ -1,11 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://3xdh642xk56j"]
+[gd_scene load_steps=14 format=3 uid="uid://3xdh642xk56j"]
 
 [ext_resource type="Script" path="res://Scenes/Game_Objects/Player/player.gd" id="1_gs2pb"]
 [ext_resource type="Texture2D" uid="uid://dna7a0g6enrax" path="res://Scenes/Game_Objects/Player/player.png" id="1_m3npb"]
-[ext_resource type="PackedScene" uid="uid://bik41wycruuu3" path="res://Scenes/Components/hit_flash_component.tscn" id="2_6bdmc"]
 [ext_resource type="PackedScene" uid="uid://d0jspkqa2nwc8" path="res://Scenes/Components/health_component.tscn" id="2_aoccn"]
 [ext_resource type="PackedScene" uid="uid://bu3a2o6c2u1bs" path="res://Scenes/Ability/Sword_Ability/Sword_Ability_Controller/sword_ability_controller.tscn" id="2_so878"]
-[ext_resource type="Shader" path="res://Scenes/Components/hit_flash_component.gdshader" id="3_wamaf"]
+[ext_resource type="PackedScene" uid="uid://cg1fiplc86sci" path="res://Scenes/Ability/Player_Stat_Ability/Player_Stat_Controller/player_stat_controller.tscn" id="4_0fe33"]
 
 [sub_resource type="Animation" id="Animation_dp0kc"]
 length = 0.001
@@ -92,11 +91,6 @@ _data = {
 "walk": SubResource("Animation_7n2j7")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1m8tl"]
-resource_local_to_scene = true
-shader = ExtResource("3_wamaf")
-shader_parameter/lerp_percent = 0.0
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_c5a5n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b82dm"]
@@ -128,16 +122,14 @@ libraries = {
 "": SubResource("AnimationLibrary_8kbmo")
 }
 
-[node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("2_6bdmc")]
-health_component = NodePath("../HealthComponent")
-sprite = NodePath("../Visuals/Sprite2D")
-hit_flash_material = SubResource("ShaderMaterial_1m8tl")
-
 [node name="HealthComponent" parent="." instance=ExtResource("2_aoccn")]
 
 [node name="Abilities" type="Node" parent="."]
 
 [node name="SwordAbilityController" parent="Abilities" instance=ExtResource("2_so878")]
+
+[node name="PlayerStatController" parent="Abilities" node_paths=PackedStringArray("health_component") instance=ExtResource("4_0fe33")]
+health_component = NodePath("../../HealthComponent")
 
 [node name="DamageIntervalTimer" type="Timer" parent="."]
 wait_time = 0.5

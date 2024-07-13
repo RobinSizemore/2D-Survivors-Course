@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 const MAX_SPEED = 200
+const BASE_SPEED = 100
 const ACCELERATION_SMOOTHING = 20
 const DAMAGE_RATE = 1 # Seconds per damage 'tick'
 
@@ -12,8 +13,10 @@ const DAMAGE_RATE = 1 # Seconds per damage 'tick'
 @onready var visuals = $Visuals
 
 var number_colliding_bodies = 0
+var speed: float
 
 func _ready():
+	speed = BASE_SPEED
 	$CollisionArea2D.body_entered.connect(on_body_entered)
 	$CollisionArea2D.body_exited.connect(on_body_exited)
 	health_component.health_changed.connect(on_health_changed)
@@ -23,7 +26,7 @@ func _ready():
 
 func _process(delta):
 	var movement_vector = get_movement_vector()
-	var target_velocity = movement_vector * MAX_SPEED
+	var target_velocity = movement_vector * speed
 	velocity = velocity.lerp(target_velocity, 1.0 - exp( - delta * ACCELERATION_SMOOTHING))
 	move_and_slide()
 	if movement_vector != Vector2.ZERO:

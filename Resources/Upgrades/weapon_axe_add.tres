@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cdkqar0rv3xo1" path="res://Scenes/Ability/Axe_Ability/Axe_Ability_Controller/axe_ability_controller.tscn" id="1_y7bgy"]
 [ext_resource type="Script" path="res://Resources/Upgrades/ability.gd" id="2_arcuv"]
-[ext_resource type="Resource" uid="uid://s5sb04p4sdyf" path="res://Resources/Upgrades/axe_damage.tres" id="2_lapjn"]
+[ext_resource type="Resource" uid="uid://s5sb04p4sdyf" path="res://Resources/Upgrades/weapon_axe_damage.tres" id="2_lapjn"]
 
 [resource]
 script = ExtResource("2_arcuv")
