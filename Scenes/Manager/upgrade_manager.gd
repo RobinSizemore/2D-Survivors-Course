@@ -11,6 +11,7 @@ func _ready():
 
 func apply_upgrade(chosen_upgrade: AbilityUpgrade):
 	var has_upgrade = current_upgrades.has(chosen_upgrade.id)
+
 	if not has_upgrade:
 		current_upgrades[chosen_upgrade.id] = {
 			"resource": chosen_upgrade,
@@ -20,6 +21,12 @@ func apply_upgrade(chosen_upgrade: AbilityUpgrade):
 	else:
 		current_upgrades[chosen_upgrade.id].quantity += 1
 		print("Level up! Chose upgrade: ", chosen_upgrade.name, " (", current_upgrades[chosen_upgrade.id].quantity, ")")
+
+	if chosen_upgrade is Ability:
+		for child_upgrade in chosen_upgrade.child_upgrades:
+			print("Added child upgrade: ", child_upgrade.name, " to pool.")
+			upgrade_pool.append(child_upgrade)
+
 	if chosen_upgrade.max_quantity > 0:
 		var current_quantity = current_upgrades[chosen_upgrade.id].quantity
 		if current_quantity >= chosen_upgrade.max_quantity:

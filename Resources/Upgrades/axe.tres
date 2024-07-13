@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://b8dcxtw21ktvt"]
+[gd_resource type="Resource" script_class="Ability" load_steps=4 format=3 uid="uid://b8dcxtw21ktvt"]
 
 [ext_resource type="PackedScene" uid="uid://cdkqar0rv3xo1" path="res://Scenes/Ability/Axe_Ability/Axe_Ability_Controller/axe_ability_controller.tscn" id="1_y7bgy"]
 [ext_resource type="Script" path="res://Resources/Upgrades/ability.gd" id="2_arcuv"]
+[ext_resource type="Resource" uid="uid://s5sb04p4sdyf" path="res://Resources/Upgrades/axe_damage.tres" id="2_lapjn"]
 
 [resource]
 script = ExtResource("2_arcuv")
 ability_controller_scene = ExtResource("1_y7bgy")
+child_upgrades = Array[Resource("res://Resources/Upgrades/ability_upgrade.gd")]([ExtResource("2_lapjn")])
 id = "axe"
 max_quantity = 1
 name = "Axe"

@@ -1,12 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://c803g3hlctp6e"]
+[gd_scene load_steps=17 format=3 uid="uid://c803g3hlctp6e"]
 
 [ext_resource type="Texture2D" uid="uid://bn7xk1s45gkwm" path="res://Scenes/Game_Objects/Wizard_Enemy/wizard_enemy.png" id="1_1k81j"]
 [ext_resource type="PackedScene" uid="uid://d0jspkqa2nwc8" path="res://Scenes/Components/health_component.tscn" id="1_34tnx"]
 [ext_resource type="Script" path="res://Scenes/Game_Objects/Wizard_Enemy/wizard_enemy.gd" id="1_jvmcm"]
 [ext_resource type="PackedScene" uid="uid://bj6xr7jsyc36f" path="res://Scenes/Components/velocity_component.tscn" id="2_0tr70"]
 [ext_resource type="PackedScene" uid="uid://d1lg4b4rcfvmp" path="res://Scenes/Components/death_component.tscn" id="2_bl32x"]
+[ext_resource type="PackedScene" uid="uid://bik41wycruuu3" path="res://Scenes/Components/hit_flash_component.tscn" id="2_pqlnf"]
 [ext_resource type="PackedScene" uid="uid://dam14jxlqjvya" path="res://Scenes/Components/vial_drop_component.tscn" id="2_u8c70"]
 [ext_resource type="PackedScene" uid="uid://dq24xeiofdni7" path="res://Scenes/Game_Objects/ExperienceVial/ExperienceVial.tscn" id="3_673ds"]
+[ext_resource type="Shader" path="res://Scenes/Components/hit_flash_component.gdshader" id="3_iu4k0"]
 [ext_resource type="PackedScene" uid="uid://dle5n101ichgx" path="res://Scenes/Components/hurtbox_component.tscn" id="4_rb1ao"]
 
 [sub_resource type="Animation" id="Animation_2oh8f"]
@@ -115,6 +117,11 @@ _data = {
 "walk": SubResource("Animation_2glrv")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iofwi"]
+resource_local_to_scene = true
+shader = ExtResource("3_iu4k0")
+shader_parameter/lerp_percent = 0.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_bt1fh"]
 radius = 8.0
 
@@ -131,6 +138,11 @@ libraries = {
 "": SubResource("AnimationLibrary_jqw4y")
 }
 autoplay = "RESET"
+
+[node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("2_pqlnf")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../Visuals/Sprite2D")
+hit_flash_material = SubResource("ShaderMaterial_iofwi")
 
 [node name="VelocityComponent" parent="." instance=ExtResource("2_0tr70")]
 max_speed = 60

@@ -4,10 +4,12 @@ const SWORD_SPAWN_RANGE = 4
 @export var max_range: float = 100
 @export var sword_ability: PackedScene
 
-var damage = 5
+var base_damage = 5.0
 var base_wait_time
+var damage: float
 
 func _ready():
+	damage = base_damage
 	base_wait_time = $Timer.wait_time
 	$Timer.timeout.connect(on_timer_timeout)
 	GameEvents.ability_upgrades_added.connect(on_ability_upgrades_added)
@@ -18,7 +20,6 @@ func on_timer_timeout():
 		return
 	var enemies = get_tree().get_nodes_in_group("enemies")
 	if enemies.size() < 1: # No enemies in range,
-		print("No enemies found.")
 		return
 	
 	enemies = enemies.filter(func(enemy: Node2D):
@@ -26,7 +27,6 @@ func on_timer_timeout():
 		return enemy.global_position.distance_squared_to(player.global_position) < pow(max_range, 2)
 	)
 	if enemies.size() < 1: # No enemies in range,
-		print("No enemies in range.")
 		return
 	enemies.sort_custom(func(a: Node2D, b: Node2D):
 		return a.global_position.distance_squared_to(player.global_position) < b.global_position.distance_squared_to(player.global_position)
@@ -51,3 +51,6 @@ func on_ability_upgrades_added(upgrade: AbilityUpgrade, current_upgrades: Dictio
 		print("Sword rate upgrade applied! New rate: ", percent_reduction * 100, "%. New wait time: ", base_wait_time * percent_reduction, "s")
 		$Timer.wait_time = base_wait_time * percent_reduction
 		$Timer.start()
+	elif upgrade.id == "sword_damage":
+		damage = base_damage * (1 + (0.15 * current_upgrades["sword_damage"]["quantity"]))
+		print("Sword damage upgrade applied! New damage: ", damage)
