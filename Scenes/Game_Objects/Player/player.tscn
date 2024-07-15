@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://3xdh642xk56j"]
+[gd_scene load_steps=13 format=3 uid="uid://3xdh642xk56j"]
 
 [ext_resource type="Script" path="res://Scenes/Game_Objects/Player/player.gd" id="1_gs2pb"]
 [ext_resource type="Texture2D" uid="uid://dna7a0g6enrax" path="res://Scenes/Game_Objects/Player/player.png" id="1_m3npb"]
@@ -99,10 +99,7 @@ radius = 7.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_d6cpg"]
 radius = 5.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nb44v"]
-bg_color = Color(0.247059, 0.14902, 0.192157, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4xkdb"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fk1ho"]
 bg_color = Color(0, 0.6, 0.858824, 1)
 border_width_left = 1
 border_width_top = 1
@@ -170,8 +167,7 @@ offset_top = -20.0
 offset_right = 10.0429
 offset_bottom = -16.0
 pivot_offset = Vector2(10, 1)
-theme_override_styles/background = SubResource("StyleBoxFlat_nb44v")
-theme_override_styles/fill = SubResource("StyleBoxFlat_4xkdb")
+theme_override_styles/fill = SubResource("StyleBoxFlat_fk1ho")
 max_value = 1.0
 value = 0.5
 show_percentage = false
