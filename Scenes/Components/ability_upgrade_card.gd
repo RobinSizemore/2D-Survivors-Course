@@ -29,6 +29,7 @@ func set_ability_upgrade(ability_upgrade: AbilityUpgrade):
 func select_card():
 	disabled = true
 	$AnimationPlayer.play("selected")
+	$ClickStreamPlayer.play_random()
 	
 	for other_card in get_tree().get_nodes_in_group("upgrade_cards"):
 		if other_card == self:
@@ -48,4 +49,5 @@ func on_gui_input(event: InputEvent):
 func on_mouse_entered():
 	if disabled:
 		return
+	$RolloverStreamPlayer.play_random()
 	$HoverAnimationPlayer.play("hover")

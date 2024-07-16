@@ -16,10 +16,18 @@ func _ready():
 func set_defeat():
 	$%TitleLabel.text = "Defeat"
 	$%DescriptionLabel.text = "You were killed!"
+	play_jingle(true)
 
 func set_victory():
 	$%TitleLabel.text = "Victory"
 	$%DescriptionLabel.text = "You won!"
+	play_jingle(false)
+
+func play_jingle(defeat: bool = false):
+	if defeat:
+		$DefeatStreamPlayer.play()
+	else:
+		$VictoryStreamPlayer.play()
 
 func on_restart_button_pressed():
 	var tree = get_tree()

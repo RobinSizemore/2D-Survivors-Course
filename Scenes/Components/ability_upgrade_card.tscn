@@ -1,6 +1,23 @@
-[gd_scene load_steps=10 format=3 uid="uid://dwr26vpu071bh"]
+[gd_scene load_steps=27 format=3 uid="uid://dwr26vpu071bh"]
 
 [ext_resource type="Script" path="res://Scenes/Components/ability_upgrade_card.gd" id="1_nd5wj"]
+[ext_resource type="PackedScene" uid="uid://cf75jp2g8ipn3" path="res://Scenes/Components/random_stream_player_component.tscn" id="2_lr4sn"]
+[ext_resource type="AudioStream" uid="uid://daf7m15b60rxs" path="res://Assets/Sounds/rollover1.ogg" id="3_vqhqb"]
+[ext_resource type="AudioStream" uid="uid://d33x835q2sqrk" path="res://Assets/Sounds/rollover2.ogg" id="4_hjf65"]
+[ext_resource type="AudioStream" uid="uid://c53swy6nl2wih" path="res://Assets/Sounds/rollover3.ogg" id="5_odxjb"]
+[ext_resource type="AudioStream" uid="uid://dpihyonuvpsoe" path="res://Assets/Sounds/rollover4.ogg" id="6_7cna3"]
+[ext_resource type="AudioStream" uid="uid://dr0g8v8uy1uyq" path="res://Assets/Sounds/rollover5.ogg" id="7_0eanf"]
+[ext_resource type="AudioStream" uid="uid://cxndhjo881crr" path="res://Assets/Sounds/rollover6.ogg" id="8_e3a36"]
+[ext_resource type="AudioStream" uid="uid://dv6425xvmwo3q" path="res://Assets/Sounds/switch1.ogg" id="9_iltsj"]
+[ext_resource type="AudioStream" uid="uid://dakqreg8hbybp" path="res://Assets/Sounds/switch2.ogg" id="10_2u7h2"]
+[ext_resource type="AudioStream" uid="uid://5727od2giglg" path="res://Assets/Sounds/switch3.ogg" id="11_cygn4"]
+[ext_resource type="AudioStream" uid="uid://bs7r7hflct0e3" path="res://Assets/Sounds/switch4.ogg" id="12_r1q1t"]
+[ext_resource type="AudioStream" uid="uid://00achd5nb71j" path="res://Assets/Sounds/switch5.ogg" id="13_be510"]
+[ext_resource type="AudioStream" uid="uid://cfa3dy6p65ub7" path="res://Assets/Sounds/switch6.ogg" id="14_6cen7"]
+[ext_resource type="AudioStream" uid="uid://bo6k0q81ri08j" path="res://Assets/Sounds/switch7.ogg" id="15_htw81"]
+[ext_resource type="AudioStream" uid="uid://c3lmcmfdbm58l" path="res://Assets/Sounds/switch8.ogg" id="16_thpf4"]
+[ext_resource type="AudioStream" uid="uid://crnelwvo5343r" path="res://Assets/Sounds/switch9.ogg" id="17_8ndbr"]
+[ext_resource type="AudioStream" uid="uid://d1msqe27tl7js" path="res://Assets/Sounds/switch10.ogg" id="18_gfw48"]
 
 [sub_resource type="Animation" id="Animation_nkpxj"]
 length = 0.001
@@ -178,6 +195,13 @@ libraries = {
 libraries = {
 "": SubResource("AnimationLibrary_epsnt")
 }
+
+[node name="RolloverStreamPlayer" parent="." instance=ExtResource("2_lr4sn")]
+volume_db = -7.5
+streams = Array[AudioStream]([ExtResource("3_vqhqb"), ExtResource("4_hjf65"), ExtResource("5_odxjb"), ExtResource("6_7cna3"), ExtResource("7_0eanf"), ExtResource("8_e3a36")])
+
+[node name="ClickStreamPlayer" parent="." instance=ExtResource("2_lr4sn")]
+streams = Array[AudioStream]([ExtResource("9_iltsj"), ExtResource("10_2u7h2"), ExtResource("11_cygn4"), ExtResource("12_r1q1t"), ExtResource("13_be510"), ExtResource("14_6cen7"), ExtResource("15_htw81"), ExtResource("16_thpf4"), ExtResource("17_8ndbr"), ExtResource("18_gfw48")])
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2

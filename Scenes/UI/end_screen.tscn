@@ -1,6 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dp88kcueunsxb"]
+[gd_scene load_steps=9 format=3 uid="uid://dp88kcueunsxb"]
 
 [ext_resource type="Script" path="res://Scenes/UI/end_screen.gd" id="1_dyejf"]
+[ext_resource type="PackedScene" uid="uid://bgpdcxypfevw5" path="res://Scenes/UI/sound_button.tscn" id="2_bq5ok"]
+[ext_resource type="AudioStream" uid="uid://xpbevtqi36q2" path="res://Assets/Sounds/jingles_PIZZI02_win.ogg" id="2_tp5lx"]
+[ext_resource type="AudioStream" uid="uid://bto60ghpei5rw" path="res://Assets/Sounds/jingles_PIZZI07_loss.ogg" id="3_dvqqg"]
 
 [sub_resource type="Animation" id="Animation_wvk24"]
 length = 0.001
@@ -68,6 +71,16 @@ libraries = {
 }
 autoplay = "in"
 
+[node name="VictoryStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_tp5lx")
+volume_db = -10.0
+bus = &"Sound Effects"
+
+[node name="DefeatStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_dvqqg")
+volume_db = -10.0
+bus = &"Sound Effects"
+
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
@@ -122,12 +135,12 @@ text = "You won the game!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RestartButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="RestartButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_bq5ok")]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Restart"
 
-[node name="QuitButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="QuitButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_bq5ok")]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Quit
