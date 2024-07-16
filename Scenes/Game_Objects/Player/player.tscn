@@ -1,10 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://3xdh642xk56j"]
+[gd_scene load_steps=19 format=3 uid="uid://3xdh642xk56j"]
 
 [ext_resource type="Script" path="res://Scenes/Game_Objects/Player/player.gd" id="1_gs2pb"]
 [ext_resource type="Texture2D" uid="uid://dna7a0g6enrax" path="res://Scenes/Game_Objects/Player/player.png" id="1_m3npb"]
 [ext_resource type="PackedScene" uid="uid://d0jspkqa2nwc8" path="res://Scenes/Components/health_component.tscn" id="2_aoccn"]
+[ext_resource type="PackedScene" uid="uid://bstuyo1mbb6sq" path="res://Scenes/Components/random_stream_player_2d_component.tscn" id="2_pni3d"]
 [ext_resource type="PackedScene" uid="uid://bu3a2o6c2u1bs" path="res://Scenes/Ability/Sword_Ability/Sword_Ability_Controller/sword_ability_controller.tscn" id="2_so878"]
+[ext_resource type="AudioStream" uid="uid://c5acq8dbdyvb" path="res://Assets/Sounds/impactMining_000.ogg" id="3_f20lt"]
 [ext_resource type="PackedScene" uid="uid://cg1fiplc86sci" path="res://Scenes/Ability/Player_Stat_Ability/Player_Stat_Controller/player_stat_controller.tscn" id="4_0fe33"]
+[ext_resource type="AudioStream" uid="uid://c34mhg3xtedt8" path="res://Assets/Sounds/impactMining_001.ogg" id="4_f1i1c"]
+[ext_resource type="AudioStream" uid="uid://wdc705qj6f2p" path="res://Assets/Sounds/impactMining_002.ogg" id="5_ej2ip"]
+[ext_resource type="AudioStream" uid="uid://dmh7p4om43fty" path="res://Assets/Sounds/impactMining_003.ogg" id="6_vcrh1"]
+[ext_resource type="AudioStream" uid="uid://noqf7unw7vof" path="res://Assets/Sounds/impactMining_004.ogg" id="7_vvdxy"]
 
 [sub_resource type="Animation" id="Animation_dp0kc"]
 length = 0.001
@@ -118,6 +124,9 @@ root_node = NodePath("../Visuals/Sprite2D")
 libraries = {
 "": SubResource("AnimationLibrary_8kbmo")
 }
+
+[node name="RandomStreamPlayer2D_component" parent="." instance=ExtResource("2_pni3d")]
+streams = Array[AudioStream]([ExtResource("3_f20lt"), ExtResource("4_f1i1c"), ExtResource("5_ej2ip"), ExtResource("6_vcrh1"), ExtResource("7_vvdxy")])
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_aoccn")]
 

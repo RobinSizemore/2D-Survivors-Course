@@ -27,3 +27,4 @@ func on_area_entered(_other_area: Area2D):
     start_position = position
     end_position = player_node.position
     moving_to_player = true
+    $RandomStreamPlayer2D_component.play_random()

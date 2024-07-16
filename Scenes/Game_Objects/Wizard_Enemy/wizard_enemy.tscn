@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c803g3hlctp6e"]
+[gd_scene load_steps=23 format=3 uid="uid://c803g3hlctp6e"]
 
 [ext_resource type="Texture2D" uid="uid://bn7xk1s45gkwm" path="res://Scenes/Game_Objects/Wizard_Enemy/wizard_enemy.png" id="1_1k81j"]
 [ext_resource type="PackedScene" uid="uid://d0jspkqa2nwc8" path="res://Scenes/Components/health_component.tscn" id="1_34tnx"]
@@ -10,6 +10,12 @@
 [ext_resource type="PackedScene" uid="uid://dq24xeiofdni7" path="res://Scenes/Game_Objects/ExperienceVial/ExperienceVial.tscn" id="3_673ds"]
 [ext_resource type="Shader" path="res://Scenes/Components/hit_flash_component.gdshader" id="3_iu4k0"]
 [ext_resource type="PackedScene" uid="uid://dle5n101ichgx" path="res://Scenes/Components/hurtbox_component.tscn" id="4_rb1ao"]
+[ext_resource type="PackedScene" uid="uid://bstuyo1mbb6sq" path="res://Scenes/Components/random_stream_player_2d_component.tscn" id="9_yf1gh"]
+[ext_resource type="AudioStream" uid="uid://dvhbtt0vlxcq1" path="res://Assets/Sounds/footstep_carpet_000.ogg" id="10_j33w2"]
+[ext_resource type="AudioStream" uid="uid://ce0jdacem5qn7" path="res://Assets/Sounds/footstep_carpet_001.ogg" id="11_xx7fc"]
+[ext_resource type="AudioStream" uid="uid://b6hi1pcqdc8sp" path="res://Assets/Sounds/footstep_carpet_002.ogg" id="12_utrxs"]
+[ext_resource type="AudioStream" uid="uid://crvunydq8btv2" path="res://Assets/Sounds/footstep_carpet_003.ogg" id="13_1s15s"]
+[ext_resource type="AudioStream" uid="uid://cpd4ltqf5r5a7" path="res://Assets/Sounds/footstep_carpet_004.ogg" id="14_4u83t"]
 
 [sub_resource type="Animation" id="Animation_2oh8f"]
 length = 0.4
@@ -159,6 +165,10 @@ max_health = 25.0
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("2_bl32x")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
+
+[node name="HitAudioPlayer" parent="." instance=ExtResource("9_yf1gh")]
+max_distance = 250.0
+streams = Array[AudioStream]([ExtResource("10_j33w2"), ExtResource("11_xx7fc"), ExtResource("12_utrxs"), ExtResource("13_1s15s"), ExtResource("14_4u83t")])
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_rb1ao")]
 health_component = NodePath("../HealthComponent")

@@ -66,6 +66,7 @@ func on_damage_interval_timer_timeout():
 
 func on_health_changed():
 	if health_component.current_health < last_health:
+		$RandomStreamPlayer2D_component.play_random()
 		GameEvents.emit_player_damaged()
 	last_health = health_component.current_health
 	update_health()
