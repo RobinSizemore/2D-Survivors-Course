@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://bkmrnjcfvpsaf"]
+[gd_resource type="Theme" load_steps=12 format=3 uid="uid://bkmrnjcfvpsaf"]
 
 [ext_resource type="FontFile" uid="uid://b2d2ug2t8v8jp" path="res://Resources/Theme/Rockboxcond12.ttf" id="1_rqtvy"]
 [ext_resource type="Texture2D" uid="uid://dtkj4k012mqwc" path="res://Assets/UI/ui.png" id="1_u061d"]
@@ -10,6 +10,32 @@ texture_margin_top = 3.0
 texture_margin_right = 2.0
 texture_margin_bottom = 3.0
 region_rect = Rect2(17, 0, 14, 16)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g2jyd"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kmcou"]
+texture = ExtResource("1_u061d")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+region_rect = Rect2(20, 20, 8, 8)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pwiin"]
+texture = ExtResource("1_u061d")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+region_rect = Rect2(4, 20, 8, 8)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s76q3"]
+texture = ExtResource("1_u061d")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+region_rect = Rect2(4, 20, 8, 8)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w4ipa"]
 
@@ -37,6 +63,13 @@ default_font = ExtResource("1_rqtvy")
 default_font_size = 16
 AlternatePanelContainer/base_type = &"PanelContainer"
 AlternatePanelContainer/styles/panel = SubResource("StyleBoxTexture_56r3p")
+Button/colors/font_color = Color(0.247059, 0.14902, 0.129412, 1)
+Button/colors/font_hover_color = Color(0.247059, 0.14902, 0.129412, 1)
+Button/colors/font_pressed_color = Color(0.247059, 0.14902, 0.129412, 1)
+Button/styles/focus = SubResource("StyleBoxEmpty_g2jyd")
+Button/styles/hover = SubResource("StyleBoxTexture_kmcou")
+Button/styles/normal = SubResource("StyleBoxTexture_pwiin")
+Button/styles/pressed = SubResource("StyleBoxTexture_s76q3")
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/colors/font_outline_color = Color(1, 1, 1, 1)
 Label/colors/font_shadow_color = Color(0, 0, 0, 0)
