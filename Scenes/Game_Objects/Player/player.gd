@@ -14,6 +14,7 @@ const DAMAGE_RATE = 1 # Seconds per damage 'tick'
 
 var number_colliding_bodies = 0
 var speed: float
+var last_health: int = 0
 
 func _ready():
 	speed = BASE_SPEED
@@ -64,6 +65,9 @@ func on_damage_interval_timer_timeout():
 	check_deal_damage()
 
 func on_health_changed():
+	if health_component.current_health < last_health:
+		GameEvents.emit_player_damaged()
+	last_health = health_component.current_health
 	update_health()
 
 func on_ability_upgrades_added(upgrade: AbilityUpgrade, _upgrades: Dictionary):
