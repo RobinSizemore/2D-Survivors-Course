@@ -14,4 +14,5 @@ offset_bottom = 6.0
 script = ExtResource("1_hd3gv")
 
 [node name="RandomStreamPlayer" parent="." instance=ExtResource("2_puckw")]
+bus = &"Sound Effects"
 streams = Array[AudioStream]([ExtResource("3_gam8v"), ExtResource("4_2xkry"), ExtResource("5_tt4hr"), ExtResource("6_wl1d0"), ExtResource("7_vpayu")])
