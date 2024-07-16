@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bstuyo1mbb6sq"]
+
+[ext_resource type="Script" path="res://Scenes/Components/random_stream_player_2d_component.gd" id="1_o8l6d"]
+
+[node name="RandomStreamPlayer2D_component" type="AudioStreamPlayer2D"]
+bus = &"Sound Effects"
+script = ExtResource("1_o8l6d")
