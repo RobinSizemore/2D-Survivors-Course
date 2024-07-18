@@ -74,12 +74,10 @@ autoplay = "in"
 [node name="VictoryStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_tp5lx")
 volume_db = -10.0
-bus = &"Sound Effects"
 
 [node name="DefeatStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_dvqqg")
 volume_db = -10.0
-bus = &"Sound Effects"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -143,5 +141,5 @@ text = "Restart"
 [node name="QuitButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_bq5ok")]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Quit
+text = "Main Menu
 "

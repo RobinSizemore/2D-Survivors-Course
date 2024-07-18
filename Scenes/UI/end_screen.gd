@@ -33,9 +33,14 @@ func on_restart_button_pressed():
 	var tree = get_tree()
 	get_tree().paused = false
 	if tree:
+		SceneTransition.transition()
+		await SceneTransition.transitioned_halfway
 		get_tree().change_scene_to_file("res://Scenes/Main/main.tscn")
 	else:
 		print("Error: Tree is null.")
 
 func on_quit_button_pressed():
-	get_tree().quit()
+	get_tree().paused = false
+	SceneTransition.transition()
+	await SceneTransition.transitioned_halfway
+	get_tree().change_scene_to_file("res://Scenes/UI/main_menu.tscn")

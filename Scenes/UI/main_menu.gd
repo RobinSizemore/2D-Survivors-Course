@@ -13,6 +13,8 @@ func _ready():
 	
 
 func on_play_pressed():
+	SceneTransition.transition()
+	await SceneTransition.transitioned_halfway
 	get_tree().change_scene_to_file("res://Scenes/Main/main.tscn")
 
 func on_options_pressed():
