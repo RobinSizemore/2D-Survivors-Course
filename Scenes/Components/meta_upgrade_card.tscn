@@ -152,19 +152,23 @@ autowrap_mode = 3
 layout_mode = 2
 mouse_filter = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-mouse_filter = 2
-texture = ExtResource("19_bqf4v")
-
 [node name="ProgressLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 10
+size_flags_horizontal = 3
 theme_type_variation = &"BlueOutlineFont"
 text = "50/100"
 
-[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/VBoxContainer"]
+[node name="CountLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"BlueOutlineFont"
+text = "x0"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
@@ -172,6 +176,18 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_tor4r")
 max_value = 1.0
 value = 0.5
 show_percentage = false
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Control"]
+layout_mode = 2
+offset_left = -9.0
+offset_top = -17.0
+offset_right = 7.0
+offset_bottom = -1.0
+mouse_filter = 2
+texture = ExtResource("19_bqf4v")
 
 [node name="PurchaseButton" type="Button" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true

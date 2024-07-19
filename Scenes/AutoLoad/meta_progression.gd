@@ -35,14 +35,25 @@ func save_save_file(): # Yes, I know the name is ridiculous.
 	file.store_var(save_data)
 	file.close()
 
+func get_upgrade_count(upgrade_id: String) -> int:
+	if !save_data.has("meta_upgrades"):
+		return 0
+	if !save_data["meta_upgrades"].has(upgrade_id):
+		return 0
+	return save_data["meta_upgrades"][upgrade_id]["quantity"]
+
 func add_meta_upgrade(upgrade: MetaUpgrade):
 	if !save_data.has("meta_upgrades"):
 		save_data["meta_upgrades"] = {}
 	if !save_data["meta_upgrades"].has(upgrade.id):
 		save_data["meta_upgrades"][upgrade.id] = {
-			"quantity": 0
+			"quantity": 0,
+			"experience_cost": upgrade.experience_cost,
+			"experience_cost_increase": upgrade.experience_cost_increase,
+			"max_quantity": upgrade.max_quantity
 		}
 	save_data["meta_upgrades"][upgrade.id]["quantity"] += 1
+	save_data["meta_upgrades"][upgrade.id]["experience_cost"] = int(save_data["meta_upgrades"][upgrade.id]["experience_cost"] * upgrade.experience_cost_increase)
 	save_save_file()
 
 func on_experience_vial_connected(number: float):
