@@ -1,44 +1,51 @@
 extends PanelContainer
 
-signal ability_upgrade_selected
-
 @onready var name_label: Label = $%NameLabel
 @onready var description_label: Label = $%DescriptionLabel
+@onready var progress_bar: ProgressBar = $%ProgressBar
+@onready var progress_label: Label = $%ProgressLabel
+@onready var purchase_button: Button = $%PurchaseButton
 
-var disabled = false
+var upgrade: MetaUpgrade
 
 func _ready():
-	gui_input.connect(on_gui_input)
-	mouse_entered.connect(on_mouse_entered)
-	
-func play_in(delay: float = 0):
-	modulate = Color.TRANSPARENT
-	await get_tree().create_timer(delay).timeout
-	$AnimationPlayer.play("in")
+	purchase_button.pressed.connect(on_purchase_button_pressed)
 	
 func set_meta_upgrade(meta_upgrade: MetaUpgrade):
+	self.upgrade = meta_upgrade
 	if name_label == null or description_label == null:
 		print("Name or Description label not found!")
 		return
-	name_label.text = meta_upgrade.name
+	name_label.text = meta_upgrade.title
 	description_label.text = meta_upgrade.description
+	update_progress_bar()
 
 func select_card():
-	disabled = true
 	$AnimationPlayer.play("selected")
 	$ClickStreamPlayer.play_random()
 	
 	await $AnimationPlayer.animation_finished
-	ability_upgrade_selected.emit()
 
-func on_gui_input(event: InputEvent):
-	if disabled:
-		return
-	if event.is_action_pressed("left_click"):
-		select_card()
+func update_progress_bar():
+	if MetaProgression.save_data.has("meta_upgrade_currency") == false:
+		MetaProgression.save_data["meta_upgrade_currency"] = 0
+		MetaProgression.save_save_file()
+	var currency = MetaProgression.save_data["meta_upgrade_currency"]
+	var percent = min(currency / upgrade.experience_cost, 1)
+	progress_bar.value = percent
+	if percent < 1:
+		purchase_button.disabled = true
+		purchase_button.text = "Not enough XP"
+	else:
+		purchase_button.disabled = false
+		purchase_button.text = "Purchase"
+	progress_label.text = str(currency) + "/" + str(upgrade.experience_cost)
 
-func on_mouse_entered():
-	if disabled:
+func on_purchase_button_pressed():
+	if (upgrade == null):
 		return
-	$RolloverStreamPlayer.play_random()
-	$HoverAnimationPlayer.play("hover")
+	MetaProgression.add_meta_upgrade(upgrade)
+	MetaProgression.save_data["meta_upgrade_currency"] -= upgrade.experience_cost
+	MetaProgression.save_save_file()
+	get_tree().call_group("meta_upgrade_cards", "update_progress_bar")
+	$AnimationPlayer.play("selected")

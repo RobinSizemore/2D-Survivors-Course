@@ -1,13 +1,7 @@
-[gd_scene load_steps=29 format=3 uid="uid://dw6mhmnc7nmpg"]
+[gd_scene load_steps=18 format=3 uid="uid://dw6mhmnc7nmpg"]
 
 [ext_resource type="Script" path="res://Scenes/Components/meta_upgrade_card.gd" id="1_j78y4"]
 [ext_resource type="PackedScene" uid="uid://cf75jp2g8ipn3" path="res://Scenes/Components/random_stream_player_component.tscn" id="2_xwfi0"]
-[ext_resource type="AudioStream" uid="uid://daf7m15b60rxs" path="res://Assets/Sounds/rollover1.ogg" id="3_pmso7"]
-[ext_resource type="AudioStream" uid="uid://d33x835q2sqrk" path="res://Assets/Sounds/rollover2.ogg" id="4_elinr"]
-[ext_resource type="AudioStream" uid="uid://c53swy6nl2wih" path="res://Assets/Sounds/rollover3.ogg" id="5_rndt1"]
-[ext_resource type="AudioStream" uid="uid://dpihyonuvpsoe" path="res://Assets/Sounds/rollover4.ogg" id="6_41bcj"]
-[ext_resource type="AudioStream" uid="uid://dr0g8v8uy1uyq" path="res://Assets/Sounds/rollover5.ogg" id="7_ef3ua"]
-[ext_resource type="AudioStream" uid="uid://cxndhjo881crr" path="res://Assets/Sounds/rollover6.ogg" id="8_xtg8d"]
 [ext_resource type="AudioStream" uid="uid://dv6425xvmwo3q" path="res://Assets/Sounds/switch1.ogg" id="9_uyy7d"]
 [ext_resource type="AudioStream" uid="uid://dakqreg8hbybp" path="res://Assets/Sounds/switch2.ogg" id="10_1ojr6"]
 [ext_resource type="AudioStream" uid="uid://5727od2giglg" path="res://Assets/Sounds/switch3.ogg" id="11_a4xef"]
@@ -59,64 +53,6 @@ tracks/2/keys = {
 "values": [0.0]
 }
 
-[sub_resource type="Animation" id="Animation_s5k78"]
-resource_name = "discard"
-length = 0.4
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(3.24901, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.00136e-05, 1.00136e-05)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.0872665, 0.174533, 0.261799, 0.349066, 0.436332, 0.523599, 0.698132, 0.785398]
-}
-
-[sub_resource type="Animation" id="Animation_sh2ef"]
-resource_name = "in"
-length = 0.4
-step = 0.025
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.025, 0.0251, 0.275),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(1.25, 1.25), Vector2(1.25, 1.25), Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_6pdb8"]
 resource_name = "selected"
 length = 0.4
@@ -131,53 +67,13 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.05, 0.35),
 "transitions": PackedFloat32Array(1, 1, 0.116629),
 "update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(1.25, 1.25), Vector2(1e-05, 1e-05)]
+"values": [Vector2(1e-05, 1e-05), Vector2(1.25, 1.25), Vector2(1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_frflx"]
 _data = {
 "RESET": SubResource("Animation_nkpxj"),
-"discard": SubResource("Animation_s5k78"),
-"in": SubResource("Animation_sh2ef"),
 "selected": SubResource("Animation_6pdb8")
-}
-
-[sub_resource type="Animation" id="Animation_jkekv"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
-[sub_resource type="Animation" id="Animation_i320y"]
-resource_name = "hover"
-length = 0.3
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.0872665, -0.0872665, 0.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_epsnt"]
-_data = {
-"RESET": SubResource("Animation_jkekv"),
-"hover": SubResource("Animation_i320y")
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tor4r"]
@@ -190,7 +86,7 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.8, 0.8, 0.8, 0)
 
-[node name="MetaUpgradeCard" type="PanelContainer" groups=["upgrade_cards"]]
+[node name="MetaUpgradeCard" type="PanelContainer" groups=["meta_upgrade_cards"]]
 custom_minimum_size = Vector2(120, 150)
 offset_right = 173.0
 offset_bottom = 150.0
@@ -201,15 +97,6 @@ script = ExtResource("1_j78y4")
 libraries = {
 "": SubResource("AnimationLibrary_frflx")
 }
-
-[node name="HoverAnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_epsnt")
-}
-
-[node name="RolloverStreamPlayer" parent="." instance=ExtResource("2_xwfi0")]
-volume_db = -7.5
-streams = Array[AudioStream]([ExtResource("3_pmso7"), ExtResource("4_elinr"), ExtResource("5_rndt1"), ExtResource("6_41bcj"), ExtResource("7_ef3ua"), ExtResource("8_xtg8d")])
 
 [node name="ClickStreamPlayer" parent="." instance=ExtResource("2_xwfi0")]
 streams = Array[AudioStream]([ExtResource("9_uyy7d"), ExtResource("10_1ojr6"), ExtResource("11_a4xef"), ExtResource("12_pumxa"), ExtResource("13_vnvkw"), ExtResource("14_frpfi"), ExtResource("15_v307k"), ExtResource("16_7ff4h"), ExtResource("17_nofe6"), ExtResource("18_50bxw")])
@@ -263,25 +150,31 @@ autowrap_mode = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("19_bqf4v")
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="ProgressLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
 theme_type_variation = &"BlueOutlineFont"
 text = "50/100"
 
 [node name="ProgressBar" type="ProgressBar" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
+mouse_filter = 2
 theme_override_styles/fill = SubResource("StyleBoxFlat_tor4r")
 max_value = 1.0
 value = 0.5
 show_percentage = false
 
 [node name="PurchaseButton" type="Button" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Purchase
 "

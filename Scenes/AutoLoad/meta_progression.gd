@@ -29,21 +29,23 @@ func load_save_file():
 	save_data = file.get_var()
 	print(save_data)
 
-func save_save_file():  #Yes, I know the name is ridiculous.
+func save_save_file(): # Yes, I know the name is ridiculous.
 	var file = FileAccess.open(SAVE_FILE_PATH, FileAccess.WRITE)
 	print("Saving save file.")
 	file.store_var(save_data)
 	file.close()
 
 func add_meta_upgrade(upgrade: MetaUpgrade):
+	if !save_data.has("meta_upgrades"):
+		save_data["meta_upgrades"] = {}
 	if !save_data["meta_upgrades"].has(upgrade.id):
 		save_data["meta_upgrades"][upgrade.id] = {
 			"quantity": 0
 		}
 	save_data["meta_upgrades"][upgrade.id]["quantity"] += 1
+	save_save_file()
 
 func on_experience_vial_connected(number: float):
 	if !save_data.has("meta_upgrade_currency"):
 		save_data["meta_upgrade_currency"] = 0
 	save_data["meta_upgrade_currency"] += number
-	
