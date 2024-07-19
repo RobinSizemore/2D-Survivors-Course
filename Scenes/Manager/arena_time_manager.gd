@@ -26,5 +26,6 @@ func get_time_elapsed():
 
 func on_arena_timer_timeout():
     var end_screen = end_screen_scene.instantiate()
+    MetaProgression.save_save_file()
     get_tree().current_scene.add_child(end_screen)
     end_screen.set_victory()

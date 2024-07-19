@@ -14,6 +14,7 @@ func _unhandled_input(event):
 
 func on_player_died():
 	var end_screen = end_screen_scene.instantiate()
+	MetaProgression.save_save_file()
 	get_tree().current_scene.add_child(end_screen)
 	end_screen.set_defeat()
 	

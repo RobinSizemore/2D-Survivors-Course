@@ -12,6 +12,8 @@ config_version=5
 
 config/name="2D-Survivors-Course"
 run/main_scene="res://Scenes/UI/main_menu.tscn"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="Arena2DSurvivors-Udemy"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -20,6 +22,7 @@ config/icon="res://icon.svg"
 GameEvents="*res://Scenes/AutoLoad/game_events.tscn"
 MusicPlayer="*res://Scenes/AutoLoad/music_player.tscn"
 SceneTransition="*res://Scenes/AutoLoad/scene_transition.tscn"
+MetaProgression="*res://Scenes/AutoLoad/meta_progression.tscn"
 
 [display]
 
